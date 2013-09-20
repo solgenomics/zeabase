@@ -4,7 +4,7 @@
 	                                  : '<span style="font-weight: bold; color: red">[email not set]</b>';
 </%init>
 
-</td></tr></table>
+
 
 <br /><br />
 <!-- BEGIN FOOTER-->
@@ -13,6 +13,8 @@
 
 Zeabase is based at the <a href="http://bti.cornell.edu">Boyce Thompson Institute</a>.
 
+
+</td></tr></table>
    <!-- Google Analytics Code -->
    <!-- Google Analytics Code moved to header -->
 

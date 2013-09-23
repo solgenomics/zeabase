@@ -3,6 +3,7 @@
 </%args>
 
 <%perl>
+
     $c->view('Toolbar')->toolbar_data( 
 	[
 	 {
@@ -89,102 +90,101 @@
 	     link => '',
 	     desc => 'View and compare chromosomes from various organisms.',
 	     menu => [
-		      { name => 'Cassava 2011',
-		        link => '/cview/map.pl?map_id=1',
-			desc => 'Cassava Genetic Map (Rabbi et al, 2011)',
-		      },
+#		      { name => 'Cassava 2011',
+#		        link => '/cview/map.pl?map_id=1',
+#			desc => 'Cassava Genetic Map (Rabbi et al, 2011)',
+#		      },
 		     ]
-		 
+#		 
 	 },
 	 {
 	     name => 'genomes',
 	     link => '',
 	     desc => 'About the cassava genome sequencing projects and related initiatives.',
 	     menu => [
-		 {
-		     name => 'Cassava genome browser at JGI',
-		     link => 'http://www.phytozome.net/cgi-bin/gbrowse/cassava/',
-		     desc =>
-			 'The cassava genome, sequenced by the Joint Genome Initiative',
-		 },
-		 {
-		     name => 'Manage cassava genome projects',
-		     link => '/organism/5/view',
-		     desc => '',
-		 },
-		 ],
-	 },
+	  	# {
+	 # 	     name => 'Cassava genome browser at JGI',
+	 # 	     link => 'http://www.phytozome.net/cgi-bin/gbrowse/cassava/',
+	 # 	     desc =>
+	 # 		 'The cassava genome, sequenced by the Joint Genome Initiative',
+	 # 	 },
+	 # 	 {
+	 # 	     name => 'Manage cassava genome projects',
+	 # 	     link => '/organism/5/view',
+	 # 	     desc => '',
+	 # 	 },
+	  	 ],
+	  },
 	 {
 	     name => 'tools',
 	     link => '/tools/',
 	     desc => 'Tools for biologists.',
 	     menu => [
-
-		      { name => 'Breeder Tools' },
-		      { name=> 'Breeder Home',
-			link=> '/breeders/home',
-			desc=> 'Access breeder functionalities from the breeders homepage. Requires login.'
-		      },
-		      { name => 'Barcode Tools',
-			link => '/barcode/',
-			desc => 'Tools to create and manage barcodes.',
-		      },
-		      { name => 'Genomic Selection',
-			link => '/solgs/search/',
-			desc => 'Genomic Selection Tools.',
-		      },
-		      
-
-		      
+		 { name => 'Breeder Tools' },
+		 { name=> 'Breeder Home',
+		   link=> '/breeders/home',
+		   desc=> 'Access breeder functionalities from the breeders homepage. Requires login.'
+		 },
+		 { name => 'Barcode Tools',
+		   link => '/barcode/',
+		   desc => 'Tools to create and manage barcodes.',
+		 },
+		 { name => 'Genomic Selection',
+		   link => '/solgs/search/',
+		   desc => 'Genomic Selection Tools.',
+		 },
+		 
+		 
+		 
 		 
 		 #Sequence Analysis
-		 { name => 'Sequence Analysis' },
-		 {
-		     name => 'BLAST',
-		     link => '/tools/blast/',
-		     desc =>
-			 'Compare a given sequence to known sequences using the Basic Local Alignment Search Tool, NCBI BLAST v. 2.2.9 [May-01-2004]'
-		 },
-		 {
-		     name => 'Alignment Analyzer',
-		     link => '/tools/align_viewer/',
-		     desc =>
-			 'Calculate alignments using Muscle v3.6, or view existing alignments using our navigator.'
-		 },
-		 {
-		     name => 'Tree Browser',
-		     link => '/tools/tree_browser/',
-		     desc =>
-			 'Visualize and manipulate phylogenetic trees from a newick-formatted string.'
-		 },
-		 {
-		     name => 'Intron Finder',
-		     link => '/tools/intron_detection/find_introns.pl',
-		     desc =>
-			 'The SGN Intron Finder works by doing a BLAST search for <em>Arabidopsis thaliana</em> proteins that are similar to the translated protein sequence of the DNA input.'
-		 },
+		 # { name => 'Sequence Analysis' },
+		 # {
+		 #     name => 'BLAST',
+		 #     link => '/tools/blast/',
+		 #     desc =>
+		 # 	 'Compare a given sequence to known sequences using the Basic Local Alignment Search Tool, NCBI BLAST v. 2.2.9 [May-01-2004]'
+		 # },
+		 # {
+		 #     name => 'Alignment Analyzer',
+		 #     link => '/tools/align_viewer/',
+		 #     desc =>
+		 # 	 'Calculate alignments using Muscle v3.6, or view existing alignments using our navigator.'
+		 # },
+		 # {
+		 #     name => 'Tree Browser',
+		 #     link => '/tools/tree_browser/',
+		 #     desc =>
+		 # 	 'Visualize and manipulate phylogenetic trees from a newick-formatted string.'
+		 # },
+		 # {
+		 #     name => 'Intron Finder',
+		 #     link => '/tools/intron_detection/find_introns.pl',
+		 #     desc =>
+		 # 	 'The SGN Intron Finder works by doing a BLAST search for <em>Arabidopsis thaliana</em> proteins that are similar to the translated protein sequence of the DNA input.'
+		 # },
 		 
-		 #Mapping
-		 { name => 'Mapping' },
+		 # #Mapping
+		 # { name => 'Mapping' },
 		 
 	#	 {
 	#	     name => 'Genome Browser',
 	#	     link => '/gbrowse/bin/gbrowse/',
 	#	     desc => 'browse genomic annotations',
 	#	 },
-		 {
-		     name => 'Comparative Viewer',
-		     link =>
-			 '/cview/view_chromosome.pl?show_offsets=1&amp;show_ruler=1&amp;show_offsets=1',
-			 desc =>
-			 'Compare chromosomes from different maps, side by side.',
-		 },
-		 {
-		     name => 'CAPS Designer',
-		     link => '/tools/caps_designer/caps_input.pl',
-		     desc =>
-			 'Designs CAPS (Cleaved Amplified Polymorphic Sequence) assays for up to twelve sequences. Two types of nucleotide inputs are accepted: fasta sequences and clustal aligment. It generates a list of polymorphic enzymes that cut the sequences into different length products.'
-		 },
+		 # {
+		 #     name => 'Comparative Viewer',
+		 #     link =>
+		 # 	 '/cview/view_chromosome.pl?show_offsets=1&amp;show_ruler=1&amp;show_offsets=1',
+		 # 	 desc =>
+		 # 	 'Compare chromosomes from different maps, side by side.',
+		 # },
+		 # {
+		 #     name => 'CAPS Designer',
+		 #     link => '/tools/caps_designer/caps_input.pl',
+		 #     desc =>
+		 # 	 'Designs CAPS (Cleaved Amplified Polymorphic Sequence) assays for up to twelve sequences. Two types of nucleotide inputs are accepted: fasta sequences and clustal aligment. It generates a list of polymorphic enzymes that cut the sequences into different length products.'
+#		 },
 		 #{
 		 #    name => 'Seed BAC Finder',
 		 #    link => '/tools/seedbac/',
@@ -198,7 +198,7 @@
 	#		 'A web interface for uploading raw QTL data, on-the-fly QTL mapping, linking predicted QTLs to relevant genetic and genomic data in SGN, and search interface for QTLs.'
 	#	 },
 		 #Molecular Biology
-		 { name => "Molecular Biology" },
+#		 { name => "Molecular Biology" },
 		 
 	#	 {
 	#	     name => 'Signal Peptide Finder',
@@ -206,11 +206,11 @@
 	#	     desc =>
 	#		 'This method of searching for signal sequences is designed to complement SignalP, and has similar success rates.'
 	#	 },
-		 {
-		     name => 'In Silico PCR',
-		     link => '/tools/insilicopcr',
-		     desc => 'In Silico PCR tool based on BLAST'
-		 },
+#		 {
+#		     name => 'In Silico PCR',
+#		     link => '/tools/insilicopcr',
+#		     desc => 'In Silico PCR tool based on BLAST'
+#		 },
 		 
 		 #Systems Biology
 #		 { name => "Systems Biology" },

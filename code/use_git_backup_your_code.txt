@@ -1,6 +1,7 @@
 git init
 git status
 git add ~/code/
+git commit -m 
 git status
 #create Code_BTI in your git account
 git remote add origin https://github.com/aiminy/Code_BTI.git

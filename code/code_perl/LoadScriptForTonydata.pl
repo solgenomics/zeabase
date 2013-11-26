@@ -151,6 +151,7 @@ my $pheno_cvterm = $schema->resultset('Cv::Cvterm')->create_with(
     });
 
 my $username = $opt_u || 'aiminy2013' ; #'cassavabase';
+
 my $sp_person_id= CXGN::People::Person->get_person_by_username($dbh, $username);
 
 die "User $username for cassavabase must be pre-loaded in the database! \n" if !$sp_person_id ;
@@ -180,6 +181,7 @@ my $plot_of = $schema->resultset("Cv::Cvterm")->create_with(
 
 #new spreadsheet, skip first column
 my $spreadsheet=CXGN::Tools::File::Spreadsheet->new($file, 1);
+
 
 print "$spreadsheet \n";
 
@@ -289,12 +291,21 @@ my $coderef = sub {
                 } ) ;
 	    $project->create_projectprops( { 'project year' => $year }, { autocreate => 1 } );
         }
+
         ###
 	my $plot = $spreadsheet->value_at($num, "PLOT");
         my $block =  $spreadsheet->value_at($num , "BLOCK");
         my $planted_plants =  $spreadsheet->value_at($num , "NOPLT");
         my $surv_plants= $spreadsheet->value_at($num , "NOSV"); ###############add this as a stock prop.
         my $clone_name = $spreadsheet->value_at($num , "DESIG");
+	#my $BreedingProgram = $spreadsheet->value_at($num, "BreedingProgram");	
+	#my $NameOfSeries    = $spreadsheet->value_at($num, "NameOfSeries");	
+	#my $Year	    = $spreadsheet->value_at($num, "Year");
+	#my $Season	    = $spreadsheet->value_at($num,"Season");
+	my $NameOfExperiment= $spreadsheet ->value_at($num, "NameOfExperiment");
+
+#	my $season= $spreadsheet->value_at($num, "NameOfExperiment");
+
       
 	#look for an existing stock by name/synonym
         my ($parent_stock, $stock_name ) = find_or_create_stock($clone_name);
@@ -352,14 +363,33 @@ my $coderef = sub {
 	print "year: $year \n";
 
          
-        if($entry) {$uniquename.= "zea_entry:". $entry;}
+        if($entry) {$uniquename.= "entry:". $entry;}
 
         if ($replicate) { $uniquename .=  "_replicate:" .  $replicate  ; }
         if ($block) { $uniquename .= "_block:" . $block ; }
 	if ($plot) { $uniquename .= "_plot:" . $plot ; }
 
-        #$uniquename .= "_" . $year . "_" . $geo_description ;
-	$uniquename .= "_" . $year;
+       # $uniquename .= "_" . $year . "_" . $geo_description;
+	
+#	$uniquename .="_". $
+
+#	$uniquename .= "_" . $BreedingProgram;
+#	$uniquename .= "_" . $NameOfSeries;
+#	$uniquename .= "_" . $Year;
+#	if($Season) {$uniquename .= "_Season:" . $Season;}
+
+	if($NameOfExperiment) {$uniquename .= "_" . $NameOfExperiment ; }
+
+#	my $BreedingProgram = $spreadsheet->value_at($num, "BreedingProgram");	
+#	my $NameOfSeries    = $spreadsheet->value_at($num, "NameOfSeries");	
+#	my $Year	    = $spreadsheet->value_at($num, "Year");
+#	my $Season	    = $spreadsheet->value_at($num,"Season");
+#	my $NameOfExperiment= $spreasheet ->value_at($num, "NameOfExperiment");
+
+
+
+#	$uniquename .= "_" . $year;
+#	$uniquename .= "_" .$season;
 
         my $plot_stock = $schema->resultset("Stock::Stock")->find_or_create(
 	    { organism_id => $organism_id,

@@ -1,0 +1,6 @@
+f11=`ls "$1" | awk -F . '{print $1}'`
+echo "$f11"
+
+#ls "$1" | awk -F . '{print $1}'
+
+(head -n 2 "$1" && tail -n +3 "$1" | sort -n -k1) > "$f11"_sorted.csv

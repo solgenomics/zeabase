@@ -123,6 +123,11 @@ ssh sgn-build.sgn.cornell.edu
 /etc/init.d/postgresql status
 /etc/init.d/postgresql stop
 
+sudo  /etc/init.d/sgn stop
+sudo  /etc/init.d/sgn start
+sudo  /etc/init.d/sgn status
+
+
 In sgn-build-64.sgn.cornell.edu, using the following commands:
 
 psql -U postgres -h db3.sgn.cornell.edu
@@ -472,6 +477,55 @@ delete from stock where stock_id in(select stock_id from stock where length(name
 #name ilike '0.41';
 
 
+select * from projectprop where project_id in (select project_id from project where name in ('WET10B-EVALTC-12-1'));
+
+
+select * from nd_experiment_project where project_id in (select project_id from project where name in ('WET10B-EVALTC-12-1'));
+
+
+begin;
+select * from stock where stock_id in (select stock_id from nd_experiment_stock where nd_experiment_id in (
+select nd_experiment_id from nd_experiment_project where project_id in (select project_id from project where name in ('WET10B-EVALTC-12-1'))));
+end;
+
+select * from stock s1,stock s2 where s1.stock_id = s2.stock_id;
+
+
+)nd_experiment_stock
+
+
+
+SELECT project.name, stock.uniquename, nd_geolocation.description, cvterm.name, phenotype.value FROM stock as plot JOIN stock_relationship ON (plot.stock_id=subject_id) JOIN stock ON (object_id=stock.stock_id) JOIN nd_experiment_stock ON(nd_experiment_stock.stock_id=plot.stock_id) JOIN nd_experiment ON (nd_experiment_stock.nd_experiment_id=nd_experiment.nd_experiment_id) JOIN nd_geolocation USING(nd_geolocation_id) JOIN nd_experiment_phenotype ON (nd_experiment_phenotype.nd_experiment_id=nd_experiment.nd_experiment_id) JOIN phenotype USING(phenotype_id) JOIN cvterm ON (phenotype.cvalue_id=cvterm.cvterm_id) JOIN nd_experiment_project ON (nd_experiment_project.nd_experiment_id=nd_experiment.nd_experiment_id) JOIN project USING(project_id)  WHERE cvterm.cvterm_id in ($trait_sql) and project.project_id in ($trial_sql) and stock.stock_id in ($accession_sql);
+
+begin;
+select * from stock where stock_id in (select stock_id from nd_experiment_stock where nd_experiment_id in (select nd_experiment_id from nd_experiment_project where project_id in 
+(select project_id from project where name = 'WET10B-EVALTC-08-1'))) AND type_id = 435;
+end;
+
+begin;
+select * from stock where stock_id in (select stock_id from nd_experiment_stock where nd_experiment_id in (select nd_experiment_id from nd_experiment_project where project_id in 
+(select project_id from project where name = 'WET10B-EVALTC-08-1'))) AND type_id = 436;
+end;
+
+begin;
+select count(*) from stock where stock_id in (select stock_id from nd_experiment_stock where nd_experiment_id in (select nd_experiment_id from nd_experiment_project where project_id in 
+(select project_id from project where name = 'WET10B-EVALTC-08-1'))) AND type_id = 435;
+end;
+
+IITA_cassava_breeding_program | testing pedigree loading
+1                             | testing pedigree loading
+
+
+begin;
+select count(*) from stock where stock_id in (select stock_id from nd_experiment_stock where nd_experiment_id in (select nd_experiment_id from nd_experiment_project where project_id in 
+(select project_id from project where name = 'IITA_cassava_breeding_program'))) AND type_id = 435;
+end;
+
+
+begin;
+select count(*) from stock where stock_id in (select stock_id from nd_experiment_stock where nd_experiment_id in (select nd_experiment_id from nd_experiment_project where project_id in 
+(select project_id from project where name = '1'))) AND type_id = 435;
+end;
 
 
 
@@ -479,10 +533,48 @@ delete from stock where stock_id in(select stock_id from stock where length(name
 
 
 
+begin;
+select count(*) from stock where stock_id in (select stock_id from nd_experiment_stock where nd_experiment_id in (select nd_experiment_id from nd_experiment_project where project_id in 
+(select project_id from project where name = 'WET10B-EVALTC-08-1'))) AND type_id = 436;
+end;
+
+select * from project where name = 'WET10B-EVALTC-08-1';
+
+begin;
+delete from phenome.stock_owner where stock_id in  (select stock_id from nd_experiment_stock where nd_experiment_id in (select nd_experiment_id from nd_experiment_project where project_id in 
+(select project_id from project where name = 'WET10B-EVALTC-08-1'))) AND type_id = 435;
+end;
 
 
+#begin;
+#delete from phenome.stock_owner where stock_id in  (select stock_id from nd_experiment_stock where nd_experiment_id in (select nd_experiment_id from nd_experiment_project where project_id in 
+#(select project_id from project where name = 'WET10B-EVALTC-08-1'))) AND type_id = 435;
+#end;
 
 
+begin;
+delete from stock where stock_id in (select stock_id from nd_experiment_stock where nd_experiment_id in (select nd_experiment_id from nd_experiment_project where project_id in 
+(select project_id from project where name = 'WET10B-EVALTC-08-1'))) AND type_id = 435;
+end;
+
+begin;
+delete from phenome.stock_owner where stock_id in  (select stock_id from nd_experiment_stock where nd_experiment_id in (select nd_experiment_id from nd_experiment_project where project_id in 
+(select project_id from project where name = 'WET10B-EVALTC-08-1')));
+end;
+
+begin;
+delete from stock where stock_id in (select stock_id from nd_experiment_stock where nd_experiment_id in (select nd_experiment_id from nd_experiment_project where project_id in 
+(select project_id from project where name = 'WET10B-EVALTC-08-1'))) AND type_id = 436;
+end;
+
+begin;
+delete from phenome.stock_image where stock_id in  (select stock_id from nd_experiment_stock where nd_experiment_id in (select nd_experiment_id from nd_experiment_project where project_id in 
+(select project_id from project where name = 'WET10B-EVALTC-08-1')));
+end;
+
+#= 7));
+#delete from stock where stock_id in (select stock_id from nd_experiment_stock where nd_experiment_id in (select nd_experiment_id from nd_experiment_project where project_id = 7));
+#delete from project where project_id in(7);
 
 
 

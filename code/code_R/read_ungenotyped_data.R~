@@ -1,0 +1,39 @@
+ReadUngenotypedData<-function(file_name){
+
+
+ungenotyped.data<-read.table(file_name)
+
+
+n=dim(undenotyped.data)[1]
+
+for(i in 1:n){
+
+mp=gregexpr("_tester",ungenotyped.data)
+
+}
+
+> dim(ungenotyped.6x1008)
+[1] 5 1
+> gregexpr("_tester",ungenotyped.6x1008)
+[[1]]
+[1] -1
+attr(,"match.length")
+[1] -1
+attr(,"useBytes")
+[1] TRUE
+
+> gregexpr("_tester",ungenotyped.6x1008[1,1])
+[[1]]
+[1] 26
+attr(,"match.length")
+[1] 7
+attr(,"useBytes")
+[1] TRUE
+
+> substr(6x1008[1,1],1,26)
+Error: unexpected symbol in "substr(6x1008"
+> substr(ungenotyped.6x1008[1,1],1,26)
+[1] "WEMA_6x1008_ungenotyped_1_"
+> substr(ungenotyped.6x1008[1,1],1,25)
+[1] "WEMA_6x1008_ungenotyped_1"
+}

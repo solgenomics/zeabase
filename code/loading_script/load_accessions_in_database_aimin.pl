@@ -1,3 +1,4 @@
+
 =head1
 
 verify_accessions_in_pedigrees_exist_in_database.pl
@@ -42,9 +43,9 @@ use Carp qw /croak/ ;
 ##
 
 
-our ($opt_H, $opt_D, $opt_i, $opt_t, $opt_u);
+our ($opt_H, $opt_D, $opt_i,$opt_t,$opt_u,$opt_e,$opt_c);
 
-getopts('H:i:tD:u:');
+getopts('H:i:tD:u:e:c:L');
 
 my $dbhost = $opt_H;
 my $dbname = $opt_D;
@@ -58,6 +59,7 @@ my $dbh = CXGN::DB::InsertDBH->new( { dbhost=>$dbhost,
 						 RaiseError => 1}
 				    }
     );
+
 my $schema= Bio::Chado::Schema->connect(  sub { $dbh->get_actual_dbh() } );
 $dbh->do('SET search_path TO public');
 
@@ -101,7 +103,7 @@ my $pedigree_cvterm = $schema->resultset('Cv::Cvterm')->create_with(
     });
 
 #my $username = $opt_u || 'kulakow' ; #'cassavabase';
-my $username = 'kulakow' ; #'cassavabase';
+my $username = 'aiminy2013' ; #'cassavabase';
 my $sp_person_id= CXGN::People::Person->get_person_by_username($dbh, $username);
 
 die "User $username for cassavabase must be pre-loaded in the database! \n" if !$sp_person_id ;
@@ -128,17 +130,38 @@ my $spreadsheet=CXGN::Tools::File::Spreadsheet->new($file, 0);
 
 my $organism = $schema->resultset("Organism::Organism")->find_or_create(
     {
-	genus   => 'Manihot',
-	species => 'Manihot esculenta',
+	genus   => 'Zea',
+	species => 'Z.mays',
     } );
 my $organism_id = $organism->organism_id();
 
 my @rows = $spreadsheet->row_labels();
 my @columns = $spreadsheet->column_labels();
 
-my $project_name = "IITA_cassava_breeding_program";
+#my $project_name = "IITA_cassava_breeding_program";
+#my $experiment_name = "loading_crosses";
+#my $location = "unspecified";
+
+
+#my $project_name = "WET10B-EVALTC-08-3";
+#my $experiment_name = "loading_crosses";
+#my $location = "Embu_Kenya";
+
+my $project_name = $opt_e;
 my $experiment_name = "loading_crosses";
-my $location = "unspecified";
+
+print $opt_c, "\n";
+
+my $location = $opt_c;
+print $location, "\n";
+
+#print "$ARGV[0]\n";
+#print "$ARGV[1]\n";
+#print "$ARGV[2]\n";
+
+#foreach my $arg (@ARGV) {
+#    print $arg, "\n";
+#}
 
 
 eval {

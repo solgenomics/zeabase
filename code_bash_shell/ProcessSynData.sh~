@@ -1,0 +1,189 @@
+#file_name=('synatc_1_part.txt' 'synatc_2_part.txt' 'synbtc_1_part.txt' 'synbtc_2_part.txt' 'synbtc_3_part.txt');
+#ENTRY	REP	BLOCK	PLOT
+
+#ENTRY	REP	BLOCK	PLOT	DESIG	NOPLT	NOSV	mSenescence0_10	fSenescence0_100.1.	fBadHuskCoverNum	fDaysToSilk	fEarAspect1_5	fEarHeightCm	fEarRotTotalNum	fFieldWtGms	fGrainMoisturePer	fGrayLeafSpot1_5.1.	fLeafBlightTurcicum1_5.1.	fNumEars	fPlantAspect1_5	fPlantHeightCm	fPlantStandNo	fRootLodgingNum	fShelledGrainWtGms	fShellPer	fStemLodgingNum	fVirusMaizeStreak1_5.1.	mAnthesisDate	mASI	mBadHuskCoverPer	mEarAspect1_5	mEarHeightCm	mEarPosition	mEarRotTotalPer	mEPPNo	mGrainMoisturePer	mGrainYieldTons_FieldWt	mGrainYieldTons_GrainWt	mGrayLeafSpot1_5	mLeafBlightTurcicum1_5	mPlantAspect1_5	mPlantHeightCm	mPlantStand_NumPerPlot	mRootLodgingPer	mStemLodgingPer	mVirusMaizeStreak1_5	NameOfExperiment
+
+#ENTRY	REP	BLOCK	PLOT	DESIG	NOPLT	NOSV	CO_322:0000012	CO_322:0000012	CO_322:0000150	CO_322:0000031	CO_322:0000018	CO_322:0000017	CO_322:0000068	CO_322:0000147	CO_322:0000033	CO_322:0000088	CO_322:0000092	CO_322:0000021	CO_322:0000011	CO_322:0000007	CO_322:0000063	CO_322:0000034	CO_322:0000005	CO:rs	CO_322:0000035	CO_322:0000100	CO_322:0000030	CO_322:0000001	CO_322:0000150	CO_322:0000018	CO_322:0000017	CO_322:0000020	CO_322:0000068	CO_322:0000021	CO_322:0000033	CO_322:0000005	CO_322:0000147	CO_322:0000088	CO_322:0000092	CO_322:0000011	CO_322:0000007	CO_322:0000063	CO_322:0000034	CO_322:0000035	CO_322:0000100	NameOfExperiment
+
+<<EOF
+
+((paste <(sed -n -e1,1p synatc1.txt | awk  -v OFS="\t" -F"\t" '{print "ENTRY","REP","BLOCK","PLOT","DESIG","NOPLT","NOSV"}') <(sed -n -e1,1p synatc1.txt | cut -f12-41,47)) && (paste <(tail -n +2 synatc1.txt | awk  -v OFS="\t" -F"\t" '{print $9,$6,$7,$8,$1," "," "}') <(tail -n +2 synatc1.txt | cut -f12-41,47))) > synatc1_title.txt;
+cat syn_trait_co_2.txt synatc1_title.txt >  co_synatc1.txt
+cat syn_trait_co_2.txt <(tail -n +2 synatc1_title.txt) > co_synatc1_1.txt
+
+
+((paste <(sed -n -e1,1p synatc2.txt | awk  -v OFS="\t" -F"\t" '{print "ENTRY","REP","BLOCK","PLOT","DESIG","NOPLT","NOSV"}') <(sed -n -e1,1p synatc2.txt | cut -f12-41,123)) && (paste <(tail -n +2 synatc2.txt | awk  -v OFS="\t" -F"\t" '{print $9,$6,$7,$8,$1," "," "}') <(tail -n +2 synatc2.txt | cut -f12-41,123))) > synatc2_title.txt;
+cat syn_trait_co_2.txt synatc2_title.txt >  co_synatc2.txt
+cat syn_trait_co_2.txt <(tail -n +2 synatc2_title.txt) > co_synatc2_1.txt
+
+
+((paste <(sed -n -e1,1p synbtc1.txt | awk  -v OFS="\t" -F"\t" '{print "ENTRY","REP","BLOCK","PLOT","DESIG","NOPLT","NOSV"}') <(sed -n -e1,1p synbtc1.txt | cut -f11-40,122)) && (paste <(tail -n +2 synbtc1.txt | awk  -v OFS="\t" -F"\t" '{print $8,$5,$6,$7,$1," "," "}') <(tail -n +2 synbtc1.txt | cut -f11-40,122))) > synbtc1_title.txt;
+cat syn_trait_co_2.txt synbtc1_title.txt >  co_synbtc1.txt
+cat syn_trait_co_2.txt <(tail -n +2 synbtc1_title.txt) > co_synbtc1_1.txt
+
+
+((paste <(sed -n -e1,1p synbtc2.txt | awk  -v OFS="\t" -F"\t" '{print "ENTRY","REP","BLOCK","PLOT","DESIG","NOPLT","NOSV"}') <(sed -n -e1,1p synbtc2.txt | cut -f11-40,122)) && (paste <(tail -n +2 synbtc2.txt | awk  -v OFS="\t" -F"\t" '{print $8,$5,$6,$7,$1," "," "}') <(tail -n +2 synbtc2.txt | cut -f11-40,122))) > synbtc2_title.txt;
+cat syn_trait_co_2.txt synbtc2_title.txt >  co_synbtc2.txt
+cat syn_trait_co_2.txt <(tail -n +2 synbtc2_title.txt) > co_synbtc2_1.txt
+
+
+((paste <(sed -n -e1,1p synbtc3.txt | awk  -v OFS="\t" -F"\t" '{print "ENTRY","REP","BLOCK","PLOT","DESIG","NOPLT","NOSV"}') <(sed -n -e1,1p synbtc3.txt | cut -f11-40,122)) && (paste <(tail -n +2 synbtc3.txt | awk  -v OFS="\t" -F"\t" '{print $8,$5,$6,$7,$1," "," "}') <(tail -n +2 synbtc3.txt | cut -f11-40,122))) > synbtc3_title.txt;
+cat syn_trait_co_2.txt synbtc3_title.txt >  co_synbtc3.txt
+cat syn_trait_co_2.txt <(tail -n +2 synbtc3_title.txt) > co_synbtc3_1.txt
+
+SYNATC-1-1
+SYNATC-1-2
+SYNATC-1-3
+SYNATC-1-4
+SYNATC-1-7
+
+head -2 co_synatc1_1.txt
+
+EOF
+
+
+<<EOF1
+
+Exp_name=(co_synatc1_1.txt co_synatc2_1.txt co_synbtc1_1.txt co_synbtc2_1.txt co_synbtc3_1.txt)
+
+cnt1=${#Exp_name[@]}
+
+for (( i = 0 ; i < cnt1 ; i++ ))
+do
+echo "${Exp_name[$i]}"
+#grep / ${acc1[$i]}
+#if echo ${acc1[$i]} | grep -qi '/'
+#then
+#echo "Element [$i]: ${acc1[$i]}_"$acc_tester""
+#acc_with_tester[$i]=${acc1[$i]}_"$acc_tester"
+#fi
+#for i in ${trial_name[@]}; do echo $i; done
+
+#((head -2 $1)&&(awk -F'\t' '$38 == "${trial_name[$i]}"' $1)) > "${trial_name[$i]}"_plot.txt
+
+#((head -2 co_synatc1_1.txt)&&(awk -F'\t' '$38 == "SYNATC-1-2"' co_synatc1_1.txt)) > SYNATC-1-2.txt
+#((head -2 co_synatc1_1.txt)&&(awk -F'\t' '$38 == "SYNATC-1-3"' co_synatc1_1.txt)) > SYNATC-1-3.txt
+#((head -2 co_synatc1_1.txt)&&(awk -F'\t' '$38 == "SYNATC-1-4"' co_synatc1_1.txt)) > SYNATC-1-4.txt
+#((head -2 co_synatc1_1.txt)&&(awk -F'\t' '$38 == "SYNATC-1-7"' co_synatc1_1.txt)) > SYNATC-1-7.txt
+
+#done
+
+trial_name=(`cut -f38 "${Exp_name[$i]}" | sort -u | tr "\n" "\t"`)
+
+cnt=${#trial_name[@]}
+
+for (( j = 1 ; j < cnt ;j++ ))
+do
+echo "${trial_name[$j]}"
+ut=${trial_name[$j]}
+
+#grep / ${acc1[$i]}
+#if echo ${acc1[$i]} | grep -qi '/'
+#then
+#echo "Element [$i]: ${acc1[$i]}_"$acc_tester""
+#acc_with_tester[$i]=${acc1[$i]}_"$acc_tester"
+#fi
+#for i in ${trial_name[@]}; do echo $i; done
+
+
+#awk -F'\t' '$38 == "${trial_name[$j]}"' "${Exp_name[$i]}"
+#awk -F'\t' '$38 == "${trial_name[$j]}"' "${Exp_name[$i]}" > "${trial_name[$j]}"_plot.txt
+#awk -F'\t' '$38 == "${trial_name[$j]}"' co_synatc1_1.txt > "${trial_name[$j]}"_plot.txt
+
+((head -2 "${Exp_name[$i]}")&&(awk -F"\t" -vut="$ut" '$38 == ut' "${Exp_name[$i]}")) > "${trial_name[$j]}"_plot.txt
+
+((head -2 "${trial_name[$j]}"_plot.txt)&&(awk -F"\t" '$2 == 1' "${trial_name[$j]}"_plot.txt)) > "${trial_name[$j]}"_plot_1.txt
+((head -2 "${trial_name[$j]}"_plot.txt)&&(awk -F"\t" '$2 == 2' "${trial_name[$j]}"_plot.txt)) > "${trial_name[$j]}"_plot_2.txt
+
+diff <(cut -f5 "${trial_name[$j]}"_plot_1.txt) <(cut -f5 "${trial_name[$j]}"_plot_1.txt)
+diff <(cut -f1 "${trial_name[$j]}"_plot_1.txt) <(cut -f1 "${trial_name[$j]}"_plot_1.txt)
+
+
+#cut -f2 "${trial_name[$j]}"_plot.txt | sort -u
+
+
+#-vut="$ut" '$1==ut' 
+#((head -2 co_synatc1_1.txt)&&(awk -F'\t' '$38 == "SYNATC-1-2"' co_synatc1_1.txt)) > SYNATC-1-2.txt
+#((head -2 co_synatc1_1.txt)&&(awk -F'\t' '$38 == "SYNATC-1-3"' co_synatc1_1.txt)) > SYNATC-1-3.txt
+#((head -2 co_synatc1_1.txt)&&(awk -F'\t' '$38 == "SYNATC-1-4"' co_synatc1_1.txt)) > SYNATC-1-4.txt
+#((head -2 co_synatc1_1.txt)&&(awk -F'\t' '$38 == "SYNATC-1-7"' co_synatc1_1.txt)) > SYNATC-1-7.txt
+
+done
+done
+
+EOF1
+
+echo "synatc1_1_54.txt"
+sed -n -e1,1p synatc1_1_54.txt | tr "\t" "\n" | wc -l  
+
+cut -f47 synatc1_1_54.txt | sort -u | tr "\t" "\n"
+
+trial_name=(`cut -f38 "${Exp_name[$i]}" | sort -u | tr "\n" "\t"`)
+
+
+
+cut -f1,2,3,10,11,47,5,42,44,48,49,52,45 synatc1_1_54.txt | less
+
+
+
+
+
+echo "synatc2_1_41_118_131.txt"
+sed -n -e1,1p synatc2_1_41_118_131.txt | tr "\t" "\n" | wc -l
+
+echo "synbtc1_1_40_117_130.txt"
+sed -n -e1,1p synbtc1_1_40_117_130.txt | tr "\t" "\n" | wc -l
+
+echo "synbtc2_1_40_117_130.txt"
+sed -n -e1,1p synbtc2_1_40_117_130.txt | tr "\t" "\n" | wc -l
+
+echo "synbtc3_1_40_117_130.txt"
+sed -n -e1,1p synbtc3_1_40_117_130.txt | tr "\t" "\n" | wc -l
+
+<<EOF2
+NameOfExperiment
+SYNATC-1-1
+SYNATC-1-2
+SYNATC-1-3
+SYNATC-1-4
+SYNATC-1-7
+
+NameOfExperiment
+SYNATC-2-1
+SYNATC-2-2
+SYNATC-2-3
+SYNATC-2-4
+SYNATC-2-5
+SYNATC-2-7
+
+NameOfExperiment
+SYNBTC-1-1
+SYNBTC-1-2
+SYNBTC-1-3
+SYNBTC-1-4
+SYNBTC-1-7
+
+NameOfExperiment
+SYNBTC-2-1
+SYNBTC-2-2
+SYNBTC-2-3
+SYNBTC-2-4
+SYNBTC-2-5
+SYNBTC-2-7
+
+NameOfExperiment
+SYNBTC-3-1
+SYNBTC-3-2
+SYNBTC-3-3
+SYNBTC-3-4
+SYNBTC-3-5
+SYNBTC-3-7
+
+cut -f38 co_synatc2_1.txt | sort -u
+
+cut -f38 co_synbtc1_1.txt | sort -u
+
+cut -f38 co_synbtc2_1.txt | sort -u
+
+cut -f38 co_synbtc3_1.txt | sort -u
+EOF2

@@ -1,0 +1,113 @@
+
+
+while read line; do
+
+path0=`echo "$line" | awk -F" " '{print $1}'`
+path1=`echo "$line" | awk -F" " '{print $2}'`
+
+path2=`echo -e "$path0\ $path1"` 
+
+echo "$path2"
+
+filedir="$HOME/Dropbox/GatesGSmaize/19\ WEMA\ MARS\ Populations\ GBS/$path2"
+
+#ls ~/DataFromDropBox/GatesGSmaize/
+
+path3=`eval ls $filedir | grep hmp.txt`
+#path3=`eval ls $filedir`
+
+
+echo $path3 
+
+#grep hmp.txt $path3
+
+file1=`echo "$path3" | sed -e 's/ /\\\ /g' | sed -n 1,1p`
+echo "$file1"
+file11="$HOME/Dropbox/GatesGSmaize/19\ WEMA\ MARS\ Populations\ GBS/$path2/$file1"
+echo "$file11"
+#eval wc -l "$file11"
+
+#file2=`echo "$path3" | sed -e 's/ /\\\ /g' | sed -n 2,2p`
+#echo "$file2"
+#file22="$HOME/Dropbox/GatesGSmaize/19\ WEMA\ MARS\ Populations\ GBS/$path2/$file2"
+#echo "$file22"
+#eval wc -l "$file22"
+
+
+
+#echo $1
+
+pop_name=`echo "$path3" | awk -F"." '{print $1}' | sed 's/ /_/g'|sed -n 1,1p` 
+echo "$pop_name"
+
+
+#pop_name2=`echo "$pop_name" | awk -F"_" '{print $3}'`
+pop_name3="WEMA_""$path1""_"
+
+#path0=`echo "$line" | awk -F" " '{print $1}'`
+#path1=`echo "$line" | awk -F" " '{print $2}'`
+
+#path2=`echo -e "$path0\ $path1"` 
+
+#echo "$path2"
+
+#tail -n +2 $1
+
+echo "$pop_name3" 
+
+paste <(echo -e "Index\tmarker\tchrom\tpos\tstrand\tMOP\talleles") <(eval sed -n 1,1p "$file11" | cut -f12- | tr "\t" "\n" | awk -F":" -v var="$pop_name3" '{print var$1}' | tr "\n" "\t")
+
+#done < $1
+
+
+#<<start_here
+
+eval tail -n +2 "$file11" > "$pop_name"_hmp_maker.txt
+eval tail -n +2 "$file11" | cut -f12- > "$pop_name"_hmp_maker2.txt
+sed 's/M/H/g;s/R/H/g;s/W/H/g;s/S/H/g;s/Y/H/g;s/K/H/g;s/N/NA/g' "$pop_name"_hmp_maker2.txt > "$pop_name"_hmp_maker3.txt
+nl "$pop_name"_hmp_maker3.txt > "$pop_name"_hmp_maker4.txt
+
+while read line; do
+
+paste <(echo "$line" | cut -f1) <(echo "$line" | cut -f2- | tr "\t" "\n" | sort -u | awk '{printf("%s\t",$0)} END {print ""}') >> "$pop_name"_hmp_maker5.txt
+
+done < "$pop_name"_hmp_maker4.txt
+
+paste <(cut -f1 "$pop_name"_hmp_maker5.txt) <(cut -f2 "$pop_name"_hmp_maker.txt) <(cut -f2- "$pop_name"_hmp_maker5.txt) > "$pop_name"_hmp_maker6.txt
+
+cut -f2 "$pop_name"_hmp_maker6.txt | awk '{n=split($0,numbers,"/")} {print n}' > "$pop_name"_hmp_maker7.txt
+#start_here
+
+bash ~/code/code_bash_shell/Identify_low_order_allele_4_alleles.sh "$pop_name"_hmp_maker6.txt > "$pop_name"_hmp_maker6_output_2.txt
+
+nl "$pop_name"_hmp_maker6_output_2.txt > "$pop_name"_hmp_locus_allele.txt
+
+paste <(awk -F"\t" '{OFS="\t";print $1,$2}' "$pop_name"_hmp_maker6.txt) <(awk -F"\t" '{OFS="\t"; print $2,$5 }' "$pop_name"_hmp_locus_allele.txt) <(cut -f1- "$pop_name"_hmp_maker3.txt) > "$pop_name"_hmp_maker_conversion1.txt
+
+sed 's/NA/N/g' "$pop_name"_hmp_maker_conversion1.txt > "$pop_name"_hmp_maker_conversion2.txt 
+
+cut -f5- "$pop_name"_hmp_maker_conversion2.txt > "$pop_name"_hmp_maker_conversion22.txt
+
+sed 's/0/Z/g;s/-/Y/g' "$pop_name"_hmp_maker_conversion22.txt > "$pop_name"_hmp_maker_conversion222.txt
+
+paste <(cut -f1-4 "$pop_name"_hmp_maker_conversion2.txt) <(cut -f1- "$pop_name"_hmp_maker_conversion222.txt) > "$pop_name"_hmp_maker_conversion2222.txt
+
+bash ~/code/code_bash_shell/Convert2Minusone.sh "$pop_name"_hmp_maker_conversion2222.txt > "$pop_name"_hmp_maker_conversion33.txt
+
+sed 's/A/1/g;s/C/1/g;s/G/1/g;s/T/1/g' "$pop_name"_hmp_maker_conversion33.txt > "$pop_name"_hmp_maker_conversion333.txt
+
+sed 's/H/0/g;s/Y/N/g;s/Z/N/g' "$pop_name"_hmp_maker_conversion333.txt > "$pop_name"_hmp_maker_conversion3333.txt
+
+sed 's/N/NA/g' "$pop_name"_hmp_maker_conversion3333.txt > "$pop_name"_hmp_maker_conversion33333.txt
+
+sed 's/NA/-9/g' "$pop_name"_hmp_maker_conversion33333.txt >  "$pop_name"_hmp_maker_conversion_4.txt
+
+paste <(cut -f1 "$pop_name"_hmp_maker_conversion_4.txt) <(cut -f1 "$pop_name"_hmp_maker7.txt) <(cut -f2 "$pop_name"_hmp_maker_conversion1.txt) <(cut -f2- "$pop_name"_hmp_maker_conversion_4.txt) >  "$pop_name"_hmp_maker_conversion_5.txt
+
+paste <(cut -f1 "$pop_name"_hmp_maker_conversion_5.txt) <(cut -f1,3,4,5 "$pop_name"_hmp_maker.txt) <(cut -f2- "$pop_name"_hmp_maker_conversion_5.txt) > "$pop_name"_hmp_maker_conversion_6.txt
+
+(paste <(echo -e "Index\tmarker\tchrom\tpos\tstrand\tMOP\talleles") <(eval sed -n 1,1p "$file11" | cut -f12- | tr "\t" "\n" | awk -F":" -v var="$pop_name3" '{print var$1}' | tr "\n" "\t") && (cat "$pop_name"_hmp_maker_conversion_6.txt)) > "$pop_name"_hmp_maker_conversion_7.txt
+
+#start_here
+
+done < $1

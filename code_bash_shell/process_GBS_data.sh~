@@ -1,0 +1,16 @@
+#sed -n 1,1p "WEMA 1017-2.hmp.txt"  
+
+
+acc=(`sed -n 1,1p "WEMA 1017-2.hmp.txt" | cut -f12- | tr "\t" "\n" | awk -F":" '{print $1}' | tr "\n" "\t"`)
+echo {}
+
+
+#acc2=("marker""\t"$acc)
+#marker
+
+
+#MARS-WEMA_293095:C21ABACXX:5:250155645
+
+#sed -n 1,1p "WEMA 1017-2.hmp.txt" | cut -f12- 
+
+#sed -n 1,1p "WEMA 1017-2.hmp.txt" | tr "\t" "\n" | wc -l

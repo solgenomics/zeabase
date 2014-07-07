@@ -1,0 +1,3 @@
+while read line; do 
+sed -n -e2,2p "Clean data 6x1008_WET11A-EVALTC-08-8.csvmetadata" | awk '{print $2,"\t",$3}' 
+done < $1

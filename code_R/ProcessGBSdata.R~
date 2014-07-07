@@ -1,0 +1,23 @@
+#;; This buffer is for notes you don't want to save, and for Lisp evaluation.
+#;; If you want to create a file, visit that file with C-x C-f,
+#;; then enter the text in that file's own buffer.
+
+GBS<-read.csv("tpg12-06-0006-dataset-s2",header=T,as.is=TRUE,row.names=1)
+
+parse.GBS <- function(x) {
+unique.x <- unique(t(x))
+alleles <- setdiff(unique.x,union("H","N"))
+
+print(alleles)
+cat(" ",length(alleles),"\n")
+
+y <- rep(0,length(x))
+y[which(x==alleles[1])] <- -1
+y[which(x==alleles[2])] <- 1
+y[which(x=="N")] <- NA
+return(y)
+}
+
+X <-apply(GBS[,-c(1:3)],1,parse.GBS)
+
+dim(X)

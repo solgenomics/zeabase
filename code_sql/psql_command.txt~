@@ -1,0 +1,118 @@
+﻿sudo /etc/init.d/postgresql start 
+sudo /etc/init.d/postgresql status 
+sudo /etc/init.d/postgresql stop
+
+
+In linux command line:
+
+sudo -u postgres psql
+
+
+
+sudo -u postgres psql -x -c "select * from pg_user where usename='postgres'" ;
+ 
+
+In postgres=#
+ALTER USER web_usr with PASSWORD 'zeabase'; 
+
+
+postgres=# \c cxgn 
+
+You are now connected to database "cxgn" as user "postgres". 
+cxgn=# select count(*) from sgn.est; 
+ count 
+------- 
+     0 
+(1 row) 
+
+cxgn=# select count(*) from cvterm; 
+ count 
+------- 
+ 41017 
+(1 row) 
+
+cxgn=# select count(*) from sgn_people.sp_person; 
+ count 
+------- 
+     7 
+(1 row) 
+
+cxgn=# select first_name, last_name from sgn_people.sp_person; 
+ first_name | last_name 
+------------+----------- 
+ Lukas      | Mueller 
+ Peter      | Kulakow 
+ Moshood    | Bakare 
+ Naama      | Menda 
+ Peter      | Kulakow 
+ Ismail     | Rabbi 
+ Melaku     | Gedil 
+(7 rows) 
+
+ALTER DATABASE cxgn RENAME TO Zea;
+
+TRUNCATE stock CASCADE;
+
+\dt: list all tables
+
+nd_experiment
+
+TRUNCATE nd_experiment CASCADE;
+TRUNCATE nd_experimentprop CASCADE;
+
+
+
+SELECT f.name, f.uniquename, fl.fmin as position_start,
+fl.fmax as position_end, srcf.name as feature_located_on
+FROM feature f
+JOIN cvterm t ON t.cvterm_id = f.type_id
+JOIN featureloc fl ON fl.feature_id = f.feature_id
+JOIN feature srcf ON srcf.feature_id = fl.srcfeature_id
+JOIN stock s ON s.organism_id = f.organism_id
+WHERE s.name = ’Sheyenne’
+AND t.name = ‘genetic_marker’;
+
+
+
+emacs ~/.bashrc
+aiminy@SGN-ThinkPad-T500:~/cxgn$ unset PERL5LIB
+aiminy@SGN-ThinkPad-T500:~/cxgn$ unset PERL5LIB
+
+aiminy@SGN-ThinkPad-T500:~/cxgn$ source ~/.bashrc
+aiminy@SGN-ThinkPad-T500:~/cxgn$ echo $PERL5LIB
+/home/aiminy/cxgn/cxgn-corelibs/lib:/home/aiminy/cxgn/local-lib/lib/perl5/x86_64-linux-gnu-thread-multi:/home/aiminy/cxgn/local-lib/lib/perl5:/home/aiminy/OBO-Edit2/trunk/chado/lib:
+aiminy@SGN-ThinkPad-T500:~/cxgn$ perldoc DBI
+
+perl gmod_load_cvterms.pl -s GO -H localhost -D zea  -r postgres -p zeabase207 -d Pg -u cassava_trait.obo 
+
+
+pg_dump -h localhost -U postgres -W zea --schema-only  -f zea_dump.sql
+dropdb -h localhost -U postgres -W zea
+createdb -h localhost -U postgres -W zea
+sudo -u postgres psql -f zea_dump.sql zea
+
+
+UPDATE films SET kind = 'Dramatic' WHERE kind = 'Drama';
+
+update sgn_people.sp_person set disabled = 'confirmed account' where username = 'aiminy2013';
+
+update sgn_people.sp_person set disabled = NULL where username ilike 'aiminy2013';
+
+scp zea_with_data_dump.sql aiminy@sgn-build.sgn.cornell.edu:
+ssh sgn-build.sgn.cornell.edu
+
+/etc/init.d/postgresql status
+/etc/init.d/postgresql stop
+
+In sgn-build-64.sgn.cornell.edu, using the following commands:
+
+psql -U postgres -h db3.sgn.cornell.edu
+
+dropdb -h db3.sgn.cornell.edu -U postgres zea
+
+createdb -h db3.sgn.cornell.edu -U postgres -T template0 -E SQL_ASCII zea
+
+psql -U postgres -h db3.sgn.cornell.edu -f zea_with_data_dump.sql zea
+
+
+ssh root@zeabase.sgn.cornell.edu

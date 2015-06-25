@@ -152,6 +152,7 @@ pages.
 
 
 
+
 	<li class="Phenotypes"><a href="/search/direct_search.pl?search=phenotypes" style="background: none"><img src="/img/soliconmenu/zea.png" alt="Phenotypes and QTLs" title="Phenotypes and QTLs" /></a>
 	  <ul>
 	    <div class="submenu PhenotypesSubMenu">
@@ -179,7 +180,7 @@ pages.
       <ul>
             <div class="submenu GenomesSequencesSubMenu">
                 <li><a href="/organism/5/view/">Maize Information</a></li>
-		<li><a href="http://www.phytozome.net/cgi-bin/gbrowse/maize/">Maize Genome at JGI</a></li>
+		<li><a href="http://www.phytozome.net/cgi-bin/gbrowse/maize/">Zea Genome at JGI</a></li>
 		<li><a href=""></a>&nbsp;<li>
 
             </div>

@@ -1,0 +1,4 @@
+
+
+
+grep -cv "^\s*$" <(comm -3 <(tail -n +3 single_trial_3WHYB-2010-15-1_rep1_1_pedigree.csv | awk -F"//" '{print $1}') <(tail -n +3 single_trial_3WHYB-2010-15-1_rep1_1_Line.csv | awk -F"/t" '{print $1}'))

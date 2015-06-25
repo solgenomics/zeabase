@@ -1,0 +1,16 @@
+snp_file=$1
+pop1=$2
+
+pop1= $2 
+echo "$pop1"
+
+cn=`sed -n 2,2p $1 | tr "\t" "\n" | wc -l`
+ 
+
+
+for (( i=2; i <= $cn; i++ ))
+do
+#echo "$i"
+perl $HOME/code/code_perl/load_zeabase_snps.pl -H localhost -D zea -i <(cut -f1,$i "$snp_file1") -p GBS_Cornell_Biotech -g "$pop1" < $HOME/DataFromVahid/Data4EachTrialAfterQC/Data4EachTrialAfterQCNew/database_user_name_pd2.txt
+
+done

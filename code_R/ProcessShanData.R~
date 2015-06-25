@@ -1,0 +1,31 @@
+data.pr[which(data.pr[,5]=="RM"),8]
+
+data.pr[which(data.pr[,5]=="RM"&data.pr[,6]=="SIV neg"),8]
+
+data.pr[which(data.pr[,5]=="RM"&data.pr[,6]=="SIV pos"),8]
+
+
+
+for (i in 8:36)
+{
+
+#print(t.test(data.pr[which(data.pr[,5]=="RM"&data.pr[,6]=="SIV neg"),i],data.pr[which(data.pr[,5]=="RM"&data.pr[,6]=="SIV pos"),i]))
+
+cat("RM","\n")
+cat(colnames(data.pr)[i],"\t",t.test(data.pr[which(data.pr[,5]=="RM"&data.pr[,6]=="SIV neg"),i],data.pr[which(data.pr[,5]=="RM"&data.pr[,6]=="SIV pos"),i])$p.value,"\n")
+
+}
+
+
+for (i in 8:36)
+{
+
+
+#print(t.test(data.pr[which(data.pr[,5]=="SM"&data.pr[,6]=="SIV neg"),i],data.pr[which(data.pr[,5]=="SM"&data.pr[,6]=="SIV pos"),i]))
+cat("SM","\n")
+cat(colnames(data.pr)[i],"\t",t.test(data.pr[which(data.pr[,5]=="SM"&data.pr[,6]=="SIV neg"),i],data.pr[which(data.pr[,5]=="SM"&data.pr[,6]=="SIV pos"),i])$p.value,"\n")
+
+}
+
+
+

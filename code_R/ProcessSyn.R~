@@ -1,0 +1,11 @@
+SYNATC.1<-read.xls("SYNATC-1 six loc.xlsx") 
+SynATC.2<-read.xls("SynATC-2.xlsx")         
+SynBTC.1<-read.xls("SynBTC-1.xlsx")        
+SynBTC.2<-read.xls("SynBTC-2.xlsx")         
+SYNBTC.3<-read.xls("SYNBTC-3.xlsx")        
+
+dim(SYNATC.1) 
+dim(SynATC.2) 
+dim(SynBTC.1) 
+dim(SynBTC.2) 
+dim(SYNBTC.3)

@@ -1,0 +1,4 @@
+/*select * from project;*/
+/*select distinct(type_id) from stock;*/
+
+delete from stockprop where type_id=445;

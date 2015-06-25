@@ -185,13 +185,22 @@
 	  menu => [
 		   {
 		    name => 'Genetic map goes here',
+<<<<<<< HEAD
+=======
+		    #link => '/cview/map.pl?map_id=1',
+		    #desc => 'Cassava Genetic Map (Rabbi et al, 2011)',
+>>>>>>> 154298ecfd1c331ed75be28573d785a55a230a38
 		   },
 		   { name => 'Genome' },
                    {
                      name => 'Zea genome browser at JGI',
                      link => 'http://www.phytozome.net/cgi-bin/gbrowse/maize/',
                      desc =>
+<<<<<<< HEAD
                          'The cassava genome, sequenced by the Joint Genome Initiative',
+=======
+                         'The maize genome, sequenced by the Joint Genome Initiative',
+>>>>>>> 154298ecfd1c331ed75be28573d785a55a230a38
                  },
 
 		  ]

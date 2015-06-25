@@ -1,0 +1,595 @@
+﻿./usr/local/share/website/sgn/lib/SGN/Controller/AJAX/BreedersToolbox.pm
+./usr/local/share/website/sgn/lib/SGN/Controller/BreedersToolbox.pm
+./usr/local/share/website/sgn/blib/lib/SGN/Controller/AJAX/BreedersToolbox.pm
+./usr/local/share/website/sgn/blib/lib/SGN/Controller/BreedersToolbox.pm
+./usr/local/share/website/sgn-old/lib/SGN/Controller/BreedersToolbox.pm
+./usr/local/share/website/sgn-old/blib/lib/SGN/Controller/BreedersToolbox.pm
+
+lib/SGN/Controller/BreedersToolbox.pm 
+
+sudo /etc/init.d/postgresql start 
+sudo /etc/init.d/postgresql status 
+sudo /etc/init.d/postgresql stop
+
+
+In linux command line:
+
+sudo -u postgres psql
+
+
+
+sudo -u postgres psql -x -c "select * from pg_user where usename='postgres'" ;
+ 
+
+In postgres=#
+ALTER USER web_usr with PASSWORD 'zeabase'; 
+
+
+postgres=# \c cxgn 
+
+You are now connected to database "cxgn" as user "postgres". 
+cxgn=# select count(*) from sgn.est; 
+ count 
+------- 
+     0 
+(1 row) 
+
+cxgn=# select count(*) from cvterm; 
+ count 
+------- 
+ 41017 
+(1 row) 
+
+cxgn=# select count(*) from sgn_people.sp_person; 
+ count 
+------- 
+     7 
+(1 row) 
+
+cxgn=# select first_name, last_name from sgn_people.sp_person; 
+ first_name | last_name 
+------------+----------- 
+ Lukas      | Mueller 
+ Peter      | Kulakow 
+ Moshood    | Bakare 
+ Naama      | Menda 
+ Peter      | Kulakow 
+ Ismail     | Rabbi 
+ Melaku     | Gedil 
+(7 rows) 
+
+ALTER DATABASE cxgn RENAME TO Zea;
+
+TRUNCATE stock CASCADE;
+
+\dt: list all tables
+
+nd_experiment
+
+TRUNCATE nd_experiment CASCADE;
+TRUNCATE nd_experimentprop CASCADE;
+
+
+
+SELECT f.name, f.uniquename, fl.fmin as position_start,
+fl.fmax as position_end, srcf.name as feature_located_on
+FROM feature f
+JOIN cvterm t ON t.cvterm_id = f.type_id
+JOIN featureloc fl ON fl.feature_id = f.feature_id
+JOIN feature srcf ON srcf.feature_id = fl.srcfeature_id
+JOIN stock s ON s.organism_id = f.organism_id
+WHERE s.name = ’Sheyenne’
+AND t.name = ‘genetic_marker’;
+
+
+
+emacs ~/.bashrc
+aiminy@SGN-ThinkPad-T500:~/cxgn$ unset PERL5LIB
+aiminy@SGN-ThinkPad-T500:~/cxgn$ unset PERL5LIB
+
+aiminy@SGN-ThinkPad-T500:~/cxgn$ source ~/.bashrc
+aiminy@SGN-ThinkPad-T500:~/cxgn$ echo $PERL5LIB
+/home/aiminy/cxgn/cxgn-corelibs/lib:/home/aiminy/cxgn/local-lib/lib/perl5/x86_64-linux-gnu-thread-multi:/home/aiminy/cxgn/local-lib/lib/perl5:/home/aiminy/OBO-Edit2/trunk/chado/lib:
+aiminy@SGN-ThinkPad-T500:~/cxgn$ perldoc DBI
+
+perl gmod_load_cvterms.pl -s GO -H localhost -D zea  -r postgres -p zeabase207 -d Pg -u cassava_trait.obo 
+
+
+pg_dump -h localhost -U postgres -W zea --schema-only  -f zea_dump.sql
+dropdb -h localhost -U postgres -W zea
+createdb -h localhost -U postgres -W zea
+sudo -u postgres psql -f zea_dump.sql zea
+
+
+UPDATE films SET kind = 'Dramatic' WHERE kind = 'Drama';
+
+
+update sgn_people.sp_person set disabled = 'confirmed account' where username = 'aiminy2013';
+
+update sgn_people.sp_person set disabled = NULL where username ilike 'aiminy2013';
+
+scp zea_with_data_dump.sql aiminy@sgn-build.sgn.cornell.edu:
+
+pg_dump -h localhost -U postgres -W zea -f zea_dump.sql
+
+scp zea_with_data_dump.sql aiminy@sgn-build.sgn.cornell.edu:
+
+
+pg_dump -h localhost -U postgres -W zea -f zea_dump.sql
+
+
+ssh sgn-build.sgn.cornell.edu
+
+/etc/init.d/postgresql status
+/etc/init.d/postgresql stop
+
+sudo  /etc/init.d/sgn stop
+sudo  /etc/init.d/sgn start
+sudo  /etc/init.d/sgn status
+
+
+In sgn-build-64.sgn.cornell.edu, using the following commands:
+
+psql -U postgres -h db3.sgn.cornell.edu
+
+dropdb -h db3.sgn.cornell.edu -U postgres zea
+
+createdb -h db3.sgn.cornell.edu -U postgres -T template0 -E SQL_ASCII zea
+
+psql -U postgres -h db3.sgn.cornell.edu -f zea_with_data_dump.sql zea
+
+
+ssh root@zeabase.sgn.cornell.edu
+
+Search a file with name “BreedersToolbox.pm”
+
+find . -name BreedersToolbox.pm
+
+sudo /etc/init.d/sgn start
+
+
+git status
+
+
+sudo git checkout lib/SGN/Controller/BreedersToolbox.pm
+
+
+
+sudo git remote -v
+sudo git init
+sudo git add batch_calculate_pca_anm_random_rmsip.m
+sudo git commit -m "calculate overlap"
+git push -u origin master
+
+sudo fdisk -l
+
+sudo mount /dev/sdb1 /media/usb
+
+sudo umount /media/usb
+
+
+To find all the hardware information, open the Terminal and type,
+lshw
+
+To get detailed information on the CPU, type:
+cat /proc/cpuinfo
+For detailed information on the memory (RAM) type:
+cat /proc/meminfo
+
+
+
+To change code in your machine, then make change in github:
+
+emacs ./mason/homepage/iconmenu.mas 
+aiminy@zeabase:/usr/local/share/website/zeabase$ sudo git add ./mason/homepage/iconmenu.mas
+[sudo] password for aiminy: 
+aiminy@zeabase:/usr/local/share/website/zeabase$ sudo git commit -m "change to maize information"
+
+sudo git remote add aiminy_github https://github.com/aiminy/zeabase.git
+aiminy@zeabase:/usr/local/share/website/zeabase$ sudo git remote -v
+
+
+sudo git remote -v
+
+
+sudo git push -u aiminy_github master
+
+Username: 
+Password: 
+Counting objects: 28, done.
+Delta compression using up to 2 threads.
+Compressing objects: 100% (17/17), done.
+Writing objects: 100% (17/17), 1.80 KiB, done.
+Total 17 (delta 9), reused 0 (delta 0)
+To https://github.com/aiminy/zeabase.git
+   81a4e78..3bb8660  master -> master
+Branch master set up to track remote branch master from aiminy_github.
+
+
+
+insert into nd_geolocation(description) values ('lub');
+
+
+DELETE FROM project WHERE name ilike 'test_lub';
+
+
+
+
+As another example, the dbReadTable function performs simple SE-
+LECT queries that mimics the R counterpart ’get.’ That is, dbReadTable
+imports the Allstar table from the database into R as a data frame, using
+the attribute PlayerID as the row.names for the data frame.
+dbReadTable(con, "Allstar", row.names = "PlayerID")
+Other RMySQL functions are dbWriteTable, dbExistsTable, and dbRe-
+moveTable, which are equivalent to the R functions ’assign’, ’exists’, and
+’remove’, respectively.
+Other queries can be executed by supplying the SQL statement. For
+example, to perform a simple aggregate query, there is no need to pull a
+database table into R and apply an R function to the data frame. Instead,
+we issue a select statement and retrieve the results table as a data frame.
+Below is an example where we obtain the number of tuples in the Allstar
+table of BaseballDataBank.
+dbGetQuery(con,"SELECT COUNT(*) FROM Allstar;")
+When the result table is huge, we may not want to bring it into R in
+its entirety, but instead fetch the tuples in batches, possibly reducing the
+batches to simple summaries before requesting the next batch. We p
+
+delete from phenome.stock_owner where stock_id in (select stock_id from nd_experiment_stock where nd_experiment_id in (select nd_experiment_id from nd_experiment_project where project_id = 7));
+delete from stock where stock_id in (select stock_id from nd_experiment_stock where nd_experiment_id in (select nd_experiment_id from nd_experiment_project where project_id = 7));
+delete from project where project_id in(7);
+
+
+zea=# select distinct(type_id) from stockprop;
+ type_id 
+---------
+     445
+(1 row)
+
+zea=# select * from cvterm where cvterm_id=445;
+ cvterm_id | cv_id |      name       | definition | dbxref_id | is_obsolete | is_relationshiptype 
+-----------+-------+-----------------+------------+-----------+-------------+---------------------
+       445 |     5 | visible_to_role |            |       599 |           0 |                   0
+(1 row)
+
+zea=# select count(*) from stockprop where type_id=445;
+ count 
+-------
+  3430
+(1 row)
+
+zea=# select distinct(type_id) from stockprop;
+ type_id 
+---------
+     445
+(1 row)
+
+zea=# select * from stock;
+zea=# select * from cvterm where cvterm_id=446;
+ cvterm_id | cv_id | name | definition | dbxref_id | is_obsolete | is_relationshiptype 
+-----------+-------+------+------------+-----------+-------------+---------------------
+(0 rows)
+
+zea=# select distinct(type_id) from stock;
+ type_id 
+---------
+     435
+     436
+(2 rows)
+
+zea=# select * from cvterm where cvterm_id=436;
+ cvterm_id | cv_id | name | definition | dbxref_id | is_obsolete | is_relationshiptype 
+-----------+-------+------+------------+-----------+-------------+---------------------
+       436 |     7 | plot |            |       590 |           0 |                   0
+(1 row)
+
+zea=# select * from cvterm where cvterm_id=435;
+ cvterm_id | cv_id |   name    | definition | dbxref_id | is_obsolete | is_relationshiptype 
+-----------+-------+-----------+------------+-----------+-------------+---------------------
+       435 |     7 | accession |            |       589 |           0 |                   0
+(1 row)
+
+zea=# select count(*) from stockprop where type_id=445;
+ count 
+-------
+  3430
+(1 row)
+
+zea=# select count(*) from stock join stockprop using(stock_id) where stockprop.type_id=445;
+ count 
+-------
+  3430
+(1 row)
+
+zea=# select count(distinct(stock.type_id)) from stock join stockprop using(stock_id) where stockprop.type_id=445;
+ count 
+-------
+     1
+(1 row)
+
+zea=# select distinct(stock.type_id) from stock join stockprop using(stock_id) where stockprop.type_id=445;
+ type_id 
+---------
+     435
+(1 row)
+
+zea=# select count(*) from stockprop;
+ count 
+-------
+  3430
+(1 row)
+
+zea=# select count(*) from stockprop where type_id=445;
+ count 
+-------
+  3430
+(1 row)
+
+zea=# begin;
+BEGIN
+zea=# delete from stockprop where type_id=445;
+DELETE 3430
+zea=# commit;
+COMMIT
+zea=# 
+
+
+zea=# select * from phenome.stock_owner;
+zea=# select * from stock where name ilike '';
+ stock_id | dbxref_id | organism_id | name | uniquename | description | type_id | is_obsolete 
+----------+-----------+-------------+------+------------+-------------+---------+-------------
+     3904 |           |           1 |      |            |             |     435 | f
+(1 row)
+
+zea=# select * from phenome.stock_owner;select stock_id from stock where name ilike '';
+ stock_id 
+----------
+     3904
+(1 row)
+
+zea=# select * from phenome.stock_owner where stock_id in (select stock_id from stock where name ilike '');
+ stock_owner_id | stock_id | sp_person_id | metadata_id 
+----------------+----------+--------------+-------------
+           3905 |     3904 |            1 |            
+(1 row)
+
+
+0.42	accession	Z.mays
+0.43	accession	Z.mays
+0.44	accession	Z.mays
+0.45	accession	Z.mays
+0.46	accession	Z.mays
+0.47	accession	Z.mays
+0.48	accession	Z.mays
+0.49	accession	Z.mays
+0.5	accession	Z.mays
+0.51	accession	Z.mays
+0.52	accession	Z.mays
+0.53	accession	Z.mays
+0.54	accession	Z.mays
+0.55	accession	Z.mays
+0.56	accession	Z.mays
+0.58	accession	Z.mays
+69	accession	Z.mays
+70	accession	Z.mays
+71	accession	Z.mays
+72
+74
+
+BEGIN
+
+FOR r IN (0.42)
+    LOOP
+    NEXT r;
+    select * from stock where name ilike 'r';
+    END LOOP;
+
+END
+
+
+select * from stock where name in ('0.41',
+'0.42',
+'0.43',
+'0.44',
+'0.45',
+'0.46',
+'0.47',
+'0.48',
+'0.49',
+'0.5',
+'0.51',
+'0.52',
+'0.53',
+'0.54',
+'0.55',
+'0.56',
+'0.58',
+'69',	
+'70',
+'71',
+'72',
+'74');
+
+delete from phenome.stock_owner where stock_id in (select stock_id from stock where name in ('0.41',
+'0.42',
+'0.43',
+'0.44',
+'0.45',
+'0.46',
+'0.47',
+'0.48',
+'0.49',
+'0.5',
+'0.51',
+'0.52',
+'0.53',
+'0.54',
+'0.55',
+'0.56',
+'0.58',
+'69',	
+'70',
+'71',
+'72',
+'74'));
+
+
+select stock_id from stock where name ilike '0.41');
+
+
+delete from stock where stock_id in (select stock_id from stock where name in ('0.41',
+'0.42',
+'0.43',
+'0.44',
+'0.45',
+'0.46',
+'0.47',
+'0.48',
+'0.49',
+'0.5',
+'0.51',
+'0.52',
+'0.53',
+'0.54',
+'0.55',
+'0.56',
+'0.58',
+'69',	
+'70',
+'71',
+'72',
+'74'));
+
+
+select * from stock where name in ('');
+
+delete from phenome.stock_owner where stock_id in (select stock_id from stock where name in (''));
+
+delete from stock where stock_id in(select stock_id from stock where name in (''));
+
+
+
+delete from phenome.stock_owner where stock_id in (select stock_id from stock where length(name) <= 52 and type_id in (436));
+
+delete from stock where stock_id in(select stock_id from stock where length(name) <= 52 and type_id in (436));
+
+
+
+#name ilike '0.41';
+
+
+select * from projectprop where project_id in (select project_id from project where name in ('WET10B-EVALTC-12-1'));
+
+
+select * from nd_experiment_project where project_id in (select project_id from project where name in ('WET10B-EVALTC-12-1'));
+
+
+begin;
+select * from stock where stock_id in (select stock_id from nd_experiment_stock where nd_experiment_id in (
+select nd_experiment_id from nd_experiment_project where project_id in (select project_id from project where name in ('WET10B-EVALTC-12-1'))));
+end;
+
+select * from stock s1,stock s2 where s1.stock_id = s2.stock_id;
+
+
+)nd_experiment_stock
+
+
+
+SELECT project.name, stock.uniquename, nd_geolocation.description, cvterm.name, phenotype.value FROM stock as plot JOIN stock_relationship ON (plot.stock_id=subject_id) JOIN stock ON (object_id=stock.stock_id) JOIN nd_experiment_stock ON(nd_experiment_stock.stock_id=plot.stock_id) JOIN nd_experiment ON (nd_experiment_stock.nd_experiment_id=nd_experiment.nd_experiment_id) JOIN nd_geolocation USING(nd_geolocation_id) JOIN nd_experiment_phenotype ON (nd_experiment_phenotype.nd_experiment_id=nd_experiment.nd_experiment_id) JOIN phenotype USING(phenotype_id) JOIN cvterm ON (phenotype.cvalue_id=cvterm.cvterm_id) JOIN nd_experiment_project ON (nd_experiment_project.nd_experiment_id=nd_experiment.nd_experiment_id) JOIN project USING(project_id)  WHERE cvterm.cvterm_id in ($trait_sql) and project.project_id in ($trial_sql) and stock.stock_id in ($accession_sql);
+
+begin;
+select * from stock where stock_id in (select stock_id from nd_experiment_stock where nd_experiment_id in (select nd_experiment_id from nd_experiment_project where project_id in 
+(select project_id from project where name = 'WET10B-EVALTC-08-1'))) AND type_id = 435;
+end;
+
+begin;
+select * from stock where stock_id in (select stock_id from nd_experiment_stock where nd_experiment_id in (select nd_experiment_id from nd_experiment_project where project_id in 
+(select project_id from project where name = 'WET10B-EVALTC-08-1'))) AND type_id = 436;
+end;
+
+begin;
+select count(*) from stock where stock_id in (select stock_id from nd_experiment_stock where nd_experiment_id in (select nd_experiment_id from nd_experiment_project where project_id in 
+(select project_id from project where name = 'WET10B-EVALTC-08-1'))) AND type_id = 435;
+end;
+
+IITA_cassava_breeding_program | testing pedigree loading
+1                             | testing pedigree loading
+
+
+begin;
+select count(*) from stock where stock_id in (select stock_id from nd_experiment_stock where nd_experiment_id in (select nd_experiment_id from nd_experiment_project where project_id in 
+(select project_id from project where name = 'IITA_cassava_breeding_program'))) AND type_id = 435;
+end;
+
+
+begin;
+select count(*) from stock where stock_id in (select stock_id from nd_experiment_stock where nd_experiment_id in (select nd_experiment_id from nd_experiment_project where project_id in 
+(select project_id from project where name = '1'))) AND type_id = 435;
+end;
+
+
+
+
+
+
+
+begin;
+select count(*) from stock where stock_id in (select stock_id from nd_experiment_stock where nd_experiment_id in (select nd_experiment_id from nd_experiment_project where project_id in 
+(select project_id from project where name = 'WET10B-EVALTC-08-1'))) AND type_id = 436;
+end;
+
+select * from project where name = 'WET10B-EVALTC-08-1';
+
+begin;
+delete from phenome.stock_owner where stock_id in  (select stock_id from nd_experiment_stock where nd_experiment_id in (select nd_experiment_id from nd_experiment_project where project_id in 
+(select project_id from project where name = 'WET10B-EVALTC-08-1'))) AND type_id = 435;
+end;
+
+
+#begin;
+#delete from phenome.stock_owner where stock_id in  (select stock_id from nd_experiment_stock where nd_experiment_id in (select nd_experiment_id from nd_experiment_project where project_id in 
+#(select project_id from project where name = 'WET10B-EVALTC-08-1'))) AND type_id = 435;
+#end;
+
+
+begin;
+delete from stock where stock_id in (select stock_id from nd_experiment_stock where nd_experiment_id in (select nd_experiment_id from nd_experiment_project where project_id in 
+(select project_id from project where name = 'WET10B-EVALTC-08-1'))) AND type_id = 435;
+end;
+
+begin;
+delete from phenome.stock_owner where stock_id in  (select stock_id from nd_experiment_stock where nd_experiment_id in (select nd_experiment_id from nd_experiment_project where project_id in 
+(select project_id from project where name = 'WET10B-EVALTC-08-1')));
+end;
+
+begin;
+delete from stock where stock_id in (select stock_id from nd_experiment_stock where nd_experiment_id in (select nd_experiment_id from nd_experiment_project where project_id in 
+(select project_id from project where name = 'WET10B-EVALTC-08-1'))) AND type_id = 436;
+end;
+
+begin;
+delete from phenome.stock_image where stock_id in  (select stock_id from nd_experiment_stock where nd_experiment_id in (select nd_experiment_id from nd_experiment_project where project_id in 
+(select project_id from project where name = 'WET10B-EVALTC-08-1')));
+end;
+
+#= 7));
+#delete from stock where stock_id in (select stock_id from nd_experiment_stock where nd_experiment_id in (select nd_experiment_id from nd_experiment_project where project_id = 7));
+#delete from project where project_id in(7);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

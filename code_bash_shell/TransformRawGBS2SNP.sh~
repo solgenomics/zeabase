@@ -1,0 +1,10 @@
+
+
+
+
+
+
+
+
+
+sed -n 1,1p "$file11" | cut -f1,12- | tr "\t" "\n" |  awk -F":" -vpath1="$path1" '{print "WEMA_"path1"_"$1}' | tr "\n" "\t" | awk -F"\t" '{OFS="\t";$1="marker"; print;}' && eval tail -n +2 "$file11" | cut -f1,12-) > "$snp_file1"

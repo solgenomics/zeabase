@@ -1,0 +1,51 @@
+#to use
+#R --slave --args "$acc_str" "$f1" "$f2" < ~code/code_R/merge_and merge_and_generate_accession_plot.R
+
+myarg <- commandArgs()
+cat(myarg,"\n");
+m=length(myarg)
+cat(m,"\n");
+
+f_index<-myarg[4:4]
+f_acc<-myarg[5:5]
+f_plot<-myarg[6:6]
+
+cat(f_index,"\n")
+cat(f_acc,"\n")
+cat(f_plot,"\n")
+
+#ff <- myarg[5:m]
+
+#f<-paste(ff,collapse=" ")
+
+#cat(f_index,"\n")
+#cat(f,"\n")
+#cat(length(f),"\n")
+
+#cat(m,"\n")
+
+#library(affy)
+#eset=justRMA(celfile.path=f)
+#write.exprs(eset,file=paste(f_index,"_exprs.txt",sep=""))
+#save.image(file=paste(f,".RData",sep=""))
+#q()
+
+
+
+
+
+#list_trait<-function(file.name){
+#getwd()
+
+#library(gdata)
+#file_name=paste("~/DataFromXuecai/Link genotypes with phenotypes/",f_index,sep="");
+#cat(file_name,"\n");
+
+#data.for.read<-read.csv(file_name,header=T,sep="\t")
+
+#print(colnames(data.for.read))
+
+#write.table(data.for.read[2:length(data.for.read[,2]),2],file="F3_name.txt",append = T, quote = F, s#ep = "\t",eol = "\n",row.names = F,col.names = F);
+
+#}
+quit("yes")

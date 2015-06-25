@@ -1,0 +1,29 @@
+awk '{
+       for (f = 1; f <= NF; f++) { a[NR, f] = $f } 
+     }
+     NF > nf { nf = NF }
+     END {
+       for (f = 1; f <= nf; f++) {
+           for (r = 1; r <= NR; r++) {
+               printf a[r, f] (r==NR ? RS : FS)
+           }
+       }
+    }' < $1
+
+
+(sed -n -e1,1p makumbi.pheno.154trials_formated.csv | cut -d"," -f17-55 && cat trait_name2.txt )
+
+paste 
+(sed -n -e1,1p makumbi.pheno.154trials_formated.csv | cut -d"," -f1-16 && sed -n -e2,2p trait_name2.txt && sed -n -e1,1p makumbi.pheno.154trials_formated.csv | cut -d"," -f56-59) > trait_name3.txt
+
+paste 
+
+sed -n -e1,1p makumbi.pheno.154trials_formated.csv | cut -d"," -f1-16  > title_154trials_1_16.txt
+sed -n -e2,2p trait_name2.txt > trait_name2_2ndrow.txt 
+sed -n -e1,1p makumbi.pheno.154trials_formated.csv | cut -d"," -f56-59 > title_154trials_56_59.txt
+
+paste  title_154trials_1_16.txt trait_name2_2ndrow.txt title_154trials_56_59.txt > trait_name3.txt
+
+(sed -n -e1,1p makumbi.pheno.154trials_formated.csv | cut -d"," -f1-59 && cat trait_name3.txt ) > trait_name4.txt
+
+#head

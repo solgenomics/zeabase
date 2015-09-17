@@ -21,153 +21,98 @@ pages.
 
 =cut
 
-
 </%doc>
 
-<style type="text/css">
-    @import url("/css/icon_nav.css");
+<br/>
 
-    #icon_nav {
-        width: 720px;
-        height: 480px;
-        margin-top: -20px;
-        margin-left: -20px;
-    }
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-6 col-md-6 col-lg-6">
 
-    .MapsMarkers {
-            position: relative; 
-    	top: 80px;
-    	left: 50px;
-    }
+<div class="panel panel-info">
+        <div class="panel-heading">News</div>
+        <div class="panel-body" style="overflow:hidden">
+          News is not available at the moment.<br /><br />
+	  <button class="btn btn-info btn-sm" onclick=location.href="/oldhighlights.pl">See all news...</button>
+        </div>
+</div>
 
-    .MapsMarkersSubMenu {
-            position: relative;
-    	left: 190px;
-    	top: -160px;
-    	width: 220px;
-            height: 100px;
-    }
-
-    .MapsMarkersSubMenu a {
-     /* padding-left: 15px; */
-    }
-
-    .Genes {
-    	position: relative;
-        top: 40px; 
-    	left: 90px;
-    }
-
-    .GenesSubMenu {
-    	width: 227px;
-    	height: 100px;
-    	position: relative;
-    	top: -120px;
-    	left: 100px;
-    }
-
-    .GenesSubMenu a {
-    /* padding-left: 15px; */
-     }
-
-    .Phenotypes {
-    	position: relative; 
-    	top: -50px;
-    	left: 300px;
-    }
-
-    .PhenotypesSubMenu {
-    	width: 227px;
-    	height: 100px; 
-    	position: relative;
-    	top: -110px;
-    	left: 115px;
-    }
-
-
-    .BreedersToolBox {
-    	position: relative; 
-    	top: 30px;
-    	left: 140px;
-        z-index: 1;
-    }
-
-    .BreedersToolBoxSubMenu {
-    	width: 227px;
-    	height: 341px;
-    	padding-top: 15px;
-    	position: relative;
-    	top: -100px;
-    	left: 115px;
-    }
-
-    .GenomesSequences {
-    	position: relative; 
-    	top: 40px;
-    	left: 140px;
-    }
-
-    .GenomesSequencesSubMenu {
-    	width: 227px;
-    	height: 90px;
-    	padding-top: 15px;
-    	position: relative;
-    	top: -110px;
-    	left: 200px;
-    }
-
-
-    .Divider { 
-            line-height:4px;
-            font-size: 4px;
-    }
-
-</style>
-
-<div id="icon_nav">
-<ul>
-	<li class="MapsMarkers"><a href="/cview/" ><img src="/img/soliconmenu/MapsMarkers.png" title="Maps and Markers" /></a>
-
+<div class="panel panel-info">
+ <div class="panel-heading">Maps and Markers</div>
+        <div class="panel-body" style="overflow:hidden">
+        <!-- <li class="MapsMarkers"><a href="/cview/" ><img src="/img/soliconmenu/MapsMarkers.png" title="Maps and Markers" /></a> -->
    		<ul>
-        	  <div class="submenu MapsMarkersSubMenu">
+        	  <!-- <div class="submenu MapsMarkersSubMenu"> -->
 		    <li><a href="/cview/index.pl">Available maps</a></li>
                     <li><a href="/cview/view_chromosome.pl?show_offsets=1&show_ruler=1&show_offsets=1">Comparative viewer</a></li>
                     <li><a href="/search/direct_search.pl?search=markers">Search markers</a></li>
-		    <li><a href="">&nbsp;</a></li>
+		  <!--  <li><a href="">&nbsp;</a></li> -->
 		    <li><a href="/cview/help/map_submission">Submit map information</a></li>
-		  </div>
+		<!--  </div> -->
 		</ul>
 	</li>
+	</div>
+</div>
 
-	<li class="Genes"><a href="/search/direct_search.pl?search=loci" style="background: none"><img src="/img/soliconmenu/Genes.png" title="Genes" /></a>
+
+<div class="panel panel-info">
+ <div class="panel-heading">Genes</div>
+       <div class="panel-body" style="overflow:hidden">
+      <!--	<li class="Genes"><a href="/search/direct_search.pl?search=loci" style="background: none"><img src="/img/soliconmenu/Genes.png" title="Genes" /></a> -->
 	  <ul>
             <div class="submenu GenesSubMenu"  >
               <li><a href="/search/direct_search.pl?search=loci">Search loci</a></li>
               <li><a href="/search/direct_search.pl?search=unigene">Search unigenes</a></li>
               <li><a href="/search/direct_search.pl?search=template">Expression</a></li>
               <li><a href="/phenome/">Become a Zea locus editor</a></li>              
-	      </div>
-	      
+	      </div>	      
 	  </ul>
+       </div>
+</div>
 
 
+<div class="panel panel-info">
+ <div class="panel-heading">Phenotypes and QTLs</div>
+       <div class="panel-body" style="overflow:hidden">
 
-
-	<li class="Phenotypes"><a href="/search/direct_search.pl?search=phenotypes" style="background: none"><img src="/img/soliconmenu/zea.png" alt="Phenotypes and QTLs" title="Phenotypes and QTLs" /></a>
 	  <ul>
 	    <div class="submenu PhenotypesSubMenu">
               <li><a href="/search/direct_search.pl?search=phenotypes">Search phenotypes</a></li>
-
               <li><a href="/qtl/">Analyze QTLs</a></li>
               <li><a href="/tools/onto/">Ontology browser</a></li>
-	      <li><a href="">&nbsp;</a></li>
+	    <!--  <li><a href="">&nbsp;</a></li> --> 
 	      <li><a href="/phenome/">Submit phenotype data</a></li>
             </div>
           </ul>
-
 	</li>
-    
-    <li class="BreedersToolBox"><a href="/breeders/home"><img src="/img/soliconmenu/BreedersToolBox.png" alt="Breeders Toolbox" title="Click to access the Breeder's toolbox" /></a>
+       </div>
+</div>
+
+
+<!--</div>
+</div> -->
+</div>
+
+<!-- </br> -->
+
+
+<!--<div class="container-fluid">
+
+<div class="row"> -->
+
+    <div class="col-sm-6 col-md-6 col-lg-6">
+
+<div class="panel panel-info">
+          <div class="panel-heading">Events</div>
+          <div class="panel-body" style="overflow:hidden"> </div>
+          Events are currently not available<br /><br /> 
+	  <a href="oldevents.pl">See all events...</a>
+</div>
+
+<div class="panel panel-info">
+ <div class="panel-heading">Breeders Toolbox</div>
+      <div class="panel-body" >
+<!--	<li class="BreedersToolBox"><a href="/breeders/home"><img src="/img/soliconmenu/BreedersToolBox.png" alt="Breeders Toolbox" title="Click to access the Breeder's toolbox" /></a> -->
 		<ul>
             <div class="submenu BreedersToolBoxSubMenu">
             	<li><a href="#">Breeder Home</a></li>
@@ -175,23 +120,37 @@ pages.
             </div>
         </ul>
 	</li>
-    
-    <li class="GenomesSequences"><a href="/genomes"><img src="/img/soliconmenu/GenomesSequences.png" alt="GenomesSequences" alt="Genomes and Sequences" title="Genomes and Sequences" /></a>
-      <ul>
+      </div>
+</div>
+
+<div class="panel panel-info">
+ <div class="panel-heading">Genomes and Sequences</div>
+      <div class="panel-body">
+<!--	<li class="GenomesSequences"><a href="/genomes"><img src="/img/soliconmenu/GenomesSequences.png" alt="GenomesSequences" alt="Genomes and Sequences" title="Genomes and Sequences" /></a> -->
+	  <ul>
             <div class="submenu GenomesSequencesSubMenu">
                 <li><a href="/organism/5/view/">Maize Information</a></li>
 		<li><a href="http://www.phytozome.net/cgi-bin/gbrowse/maize/">Zea Genome at JGI</a></li>
-		<li><a href=""></a>&nbsp;<li>
+<!--		<li><a href=""></a>&nbsp;<li> -->
 
             </div>
         </ul>
-
 	</li>
+      </div>
+</div>
     
-       
-    
-</ul>
-
+<div class="panel panel-info">
+          <div class="panel-heading">Links</div>
+          <div class="panel-body" style="overflow:hidden">
+	    <li><a href="http://www.maizegdb.org/">Maize GDB</a></li>
+            <li><a href="http://maize.jcvi.org/">Maize at JCVI</a></li>
+            <li><a href="http://ensembl.gramene.org/Zea_mays/Info/Index">Maize at ENSEMBL</a></li> 
+            <!--    Other links are currently not available. -->
+          </div>
 </div>
 
-<& /util/import_javascript.mas, classes=>[qw[ icon_nav ]] &>
+
+
+</div>
+</div>
+</div>

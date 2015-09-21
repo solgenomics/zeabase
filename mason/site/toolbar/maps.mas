@@ -2,7 +2,8 @@
 <!-- <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Tools<span class="caret"></span></a> -->
   <ul class="dropdown-menu">
     
-    <li><a href="'/cview/map.pl?map_id=1">Genetic maps</a></li>
+    <li><a href='/cview/map.pl?map_id=1'>Genetic maps</a></li>
+   <!-- <li><a href="#">Genetic maps</a></li> -->
 
     <li><a href="http://www.phytozome.net/cgi-bin/gbrowse/maize/">Genome browser at JGI</a></li>
   </ul>
